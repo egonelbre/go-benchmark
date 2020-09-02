@@ -28,7 +28,7 @@ func easyjson5fcf962eDecodeGithubComJsonIteratorGoBenchmarkWith10StringFields(in
 	}
 	in.Delim('{')
 	for !in.IsDelim('}') {
-		key := in.UnsafeString()
+		key := in.UnsafeFieldName(false)
 		in.WantColon()
 		if in.IsNull() {
 			in.Skip()
@@ -70,75 +70,65 @@ func easyjson5fcf962eEncodeGithubComJsonIteratorGoBenchmarkWith10StringFields(ou
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field1\":"
+		out.RawString(prefix[1:])
+		out.String(string(in.Field1))
 	}
-	first = false
-	out.RawString("\"Field1\":")
-	out.String(string(in.Field1))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field2\":"
+		out.RawString(prefix)
+		out.String(string(in.Field2))
 	}
-	first = false
-	out.RawString("\"Field2\":")
-	out.String(string(in.Field2))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field3\":"
+		out.RawString(prefix)
+		out.String(string(in.Field3))
 	}
-	first = false
-	out.RawString("\"Field3\":")
-	out.String(string(in.Field3))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field4\":"
+		out.RawString(prefix)
+		out.String(string(in.Field4))
 	}
-	first = false
-	out.RawString("\"Field4\":")
-	out.String(string(in.Field4))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field5\":"
+		out.RawString(prefix)
+		out.String(string(in.Field5))
 	}
-	first = false
-	out.RawString("\"Field5\":")
-	out.String(string(in.Field5))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field6\":"
+		out.RawString(prefix)
+		out.String(string(in.Field6))
 	}
-	first = false
-	out.RawString("\"Field6\":")
-	out.String(string(in.Field6))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field7\":"
+		out.RawString(prefix)
+		out.String(string(in.Field7))
 	}
-	first = false
-	out.RawString("\"Field7\":")
-	out.String(string(in.Field7))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field8\":"
+		out.RawString(prefix)
+		out.String(string(in.Field8))
 	}
-	first = false
-	out.RawString("\"Field8\":")
-	out.String(string(in.Field8))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field9\":"
+		out.RawString(prefix)
+		out.String(string(in.Field9))
 	}
-	first = false
-	out.RawString("\"Field9\":")
-	out.String(string(in.Field9))
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"Field10\":"
+		out.RawString(prefix)
+		out.String(string(in.Field10))
 	}
-	first = false
-	out.RawString("\"Field10\":")
-	out.String(string(in.Field10))
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
-//func (v PbTestObject) MarshalJSON() ([]byte, error) {
-//	w := jwriter.Writer{}
-//	easyjson5fcf962eEncodeGithubComJsonIteratorGoBenchmarkWith10StringFields(&w, v)
-//	return w.Buffer.BuildBytes(), w.Error
-//}
+func (v PbTestObject) MarshalJSON() ([]byte, error) {
+	w := jwriter.Writer{}
+	easyjson5fcf962eEncodeGithubComJsonIteratorGoBenchmarkWith10StringFields(&w, v)
+	return w.Buffer.BuildBytes(), w.Error
+}
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v PbTestObject) MarshalEasyJSON(w *jwriter.Writer) {

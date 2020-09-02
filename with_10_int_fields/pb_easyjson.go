@@ -28,7 +28,7 @@ func easyjson5fcf962eDecodeGithubComJsonIteratorGoBenchmarkWith10IntFields(in *j
 	}
 	in.Delim('{')
 	for !in.IsDelim('}') {
-		key := in.UnsafeString()
+		key := in.UnsafeFieldName(false)
 		in.WantColon()
 		if in.IsNull() {
 			in.Skip()
@@ -71,83 +71,99 @@ func easyjson5fcf962eEncodeGithubComJsonIteratorGoBenchmarkWith10IntFields(out *
 	first := true
 	_ = first
 	if in.Field1 != 0 {
-		if !first {
-			out.RawByte(',')
-		}
+		const prefix string = ",\"field1\":"
 		first = false
-		out.RawString("\"field1\":")
+		out.RawString(prefix[1:])
 		out.Int32(int32(in.Field1))
 	}
 	if in.Field2 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field2\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field2\":")
 		out.Int32(int32(in.Field2))
 	}
 	if in.Field3 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field3\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field3\":")
 		out.Int32(int32(in.Field3))
 	}
 	if in.Field4 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field4\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field4\":")
 		out.Int32(int32(in.Field4))
 	}
 	if in.Field5 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field5\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field5\":")
 		out.Int32(int32(in.Field5))
 	}
 	if in.Field6 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field6\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field6\":")
 		out.Int32(int32(in.Field6))
 	}
 	if in.Field7 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field7\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field7\":")
 		out.Int32(int32(in.Field7))
 	}
 	if in.Field8 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field8\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field8\":")
 		out.Int32(int32(in.Field8))
 	}
 	if in.Field9 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field9\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field9\":")
 		out.Int32(int32(in.Field9))
 	}
 	if in.Field10 != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"field10\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"field10\":")
 		out.Int32(int32(in.Field10))
 	}
 	out.RawByte('}')
