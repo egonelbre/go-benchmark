@@ -13,7 +13,7 @@ import (
 /*
    encoding/json
 */
-func BenchmarkDecodeStdStructMedium(b *testing.B) {
+func BenchmarkDecodeEncodingJsonStructMedium(b *testing.B) {
 	b.ReportAllocs()
 	var data MediumPayload
 	for i := 0; i < b.N; i++ {
@@ -21,7 +21,7 @@ func BenchmarkDecodeStdStructMedium(b *testing.B) {
 	}
 }
 
-func BenchmarkEncodeStdStructMedium(b *testing.B) {
+func BenchmarkEncodeEncodingJsonStructMedium(b *testing.B) {
 	var data MediumPayload
 	json.Unmarshal(mediumFixture, &data)
 	b.ReportAllocs()

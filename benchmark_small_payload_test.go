@@ -40,7 +40,7 @@ func BenchmarkJsonParserSmall(b *testing.B) {
 	}
 }
 
-func BenchmarkJsnoiterPullSmall(b *testing.B) {
+func BenchmarkJsoniterPullSmall(b *testing.B) {
 	b.ReportAllocs()
 	iter := jsoniter.ParseBytes(jsoniter.ConfigDefault, smallFixture)
 	b.ResetTimer()
@@ -64,7 +64,7 @@ func BenchmarkJsnoiterPullSmall(b *testing.B) {
 	}
 }
 
-func BenchmarkJsnoiterReflectSmall(b *testing.B) {
+func BenchmarkJsoniterReflectSmall(b *testing.B) {
 	iter := jsoniter.ParseBytes(jsoniter.ConfigDefault, smallFixture)
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -75,10 +75,7 @@ func BenchmarkJsnoiterReflectSmall(b *testing.B) {
 	}
 }
 
-/*
-   encoding/json
-*/
-func BenchmarkEncodingJsonStructSmall(b *testing.B) {
+func BenchmarkStdStructSmall(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		var data SmallPayload

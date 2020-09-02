@@ -13,7 +13,7 @@ import (
 
 var large = flag.Bool("large", false, "run test with large json file")
 
-func Test_jsonparser_skip(t *testing.T) {
+func TestJsonParserLargeFile(t *testing.T) {
 	if !*large {
 		t.Skip("Large test skipped. Use -large to run.")
 	}
@@ -29,7 +29,7 @@ func Test_jsonparser_skip(t *testing.T) {
 	}
 }
 
-func Test_jsoniter_skip(t *testing.T) {
+func TestJsoniterLargeFile(t *testing.T) {
 	if !*large {
 		t.Skip("Large test skipped. Use -large to run.")
 	}
@@ -48,7 +48,7 @@ func Test_jsoniter_skip(t *testing.T) {
 	}
 }
 
-func Benchmark_jsonparser(b *testing.B) {
+func BenchmarkJsonParserLargeFile(b *testing.B) {
 	if !*large {
 		b.Skip("Large benchmark skipped. Use -large to run.")
 	}
@@ -64,7 +64,7 @@ func Benchmark_jsonparser(b *testing.B) {
 	}
 }
 
-func Benchmark_stardard_lib(b *testing.B) {
+func BenchmarkEncodingJsonFile(b *testing.B) {
 	if !*large {
 		b.Skip("Large benchmark skipped. Use -large to run.")
 	}
@@ -78,7 +78,7 @@ func Benchmark_stardard_lib(b *testing.B) {
 	}
 }
 
-func Benchmark_jsoniter(b *testing.B) {
+func BenchmarkJsoniterLargeFile(b *testing.B) {
 	if !*large {
 		b.Skip("Large benchmark skipped. Use -large to run.")
 	}

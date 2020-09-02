@@ -10,7 +10,7 @@ import (
 	"github.com/json-iterator/go-benchmark/testobject"
 )
 
-func Benchmark_protobuf(b *testing.B) {
+func BenchmarkProtobuf_With2Fields(b *testing.B) {
 	b.ReportAllocs()
 	//obj := PbTestObject{"1","2","3","4","5","6","7","8","9","10"}
 	obj := With2Fields{"1", "2"}
@@ -20,7 +20,7 @@ func Benchmark_protobuf(b *testing.B) {
 	}
 }
 
-func Benchmark_jsoniter2(b *testing.B) {
+func BenchmarkJsoniterMarshal_PbTestObject(b *testing.B) {
 	b.ReportAllocs()
 	obj := PbTestObject{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
 	//obj := With2Fields{"1", "2"}
@@ -34,7 +34,7 @@ func Benchmark_jsoniter2(b *testing.B) {
 	}
 }
 
-func Benchmark_json_marshal(b *testing.B) {
+func BenchmarkJsoniterMarshal_With2Fields(b *testing.B) {
 	b.ReportAllocs()
 	obj := With2Fields{"1", "2"}
 	data, _ := jsoniter.Marshal(&obj)
@@ -43,7 +43,7 @@ func Benchmark_json_marshal(b *testing.B) {
 	}
 }
 
-func Benchmark_thrift(b *testing.B) {
+func BenchmarkThrift_TestObject(b *testing.B) {
 	b.ReportAllocs()
 	obj := testobject.NewThriftTestObject()
 	obj.Field1 = "1"
